@@ -1,8 +1,14 @@
-const express = require("express");
-const server = express();
+const express = require('express')
+const server = express()
 
-server.get("/teste", (req, res) => {
-  return res.json({ message: "Hello, world." });
-});
+server.get('/users/:id', (req, res) => {
+  const { name } = req.query
+  const { id } = req.params
 
-server.listen(3333);
+  return res.json({
+    message: `Hello, ${name}`,
+    id
+  })
+})
+
+server.listen(3333)
